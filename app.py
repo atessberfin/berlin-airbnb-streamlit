@@ -60,7 +60,7 @@ berlin_geojson_norm = normalized_geojson(berlin_geojson)
 
 
 # -----------------------------
-# Load listings + Heatmap
+# Load listings and Heatmap
 # -----------------------------
 @st.cache_data
 def load_listings(path: Path) -> pd.DataFrame:
@@ -95,7 +95,7 @@ def load_heatmap_from_listings(path: Path) -> pd.DataFrame:
 
 
 # -----------------------------
-# GeoJSON centroids (for lat/lon mapping)
+# GeoJSON centroids 
 # -----------------------------
 @st.cache_data
 def build_geojson_centroids(geojson: dict) -> dict:

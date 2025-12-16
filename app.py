@@ -47,7 +47,6 @@ with open(DATA / "berlin_districts.geojson", "r", encoding="utf-8") as f:
 
 @st.cache_data
 def normalized_geojson(geojson: dict) -> dict:
-    """Return a copy of geojson where properties.name is normalized."""
     gj = json.loads(json.dumps(geojson))  # deep copy
     for feat in gj.get("features", []):
         props = feat.get("properties", {})
@@ -99,10 +98,6 @@ def load_heatmap_from_listings(path: Path) -> pd.DataFrame:
 # -----------------------------
 @st.cache_data
 def build_geojson_centroids(geojson: dict) -> dict:
-    """
-    Returns: { neighbourhood_name: (lat, lon) }
-    GeoJSON coords are (lon, lat)
-    """
     centroids = {}
 
     def collect_points_from_polygon(poly_coords, points_out):

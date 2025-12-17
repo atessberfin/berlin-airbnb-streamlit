@@ -1,46 +1,75 @@
 Berlin Airbnb Pricing Studio
 
-A machine learning–powered web application for estimating Airbnb listing prices in Berlin.
-The project integrates a trained ML model with an interactive Streamlit interface and is deployed on AWS EC2.
+A machine learning–based pricing and investment analysis application for Airbnb listings in Berlin.
 
-URL:
+Live App:
 
-http://3.72.159.159:8501
-The application is deployed on an AWS EC2 instance with a static Elastic IP and runs continuously using systemd.
+http://3.72.159.159:8501/
 
 Project Overview
 
-This project aims to support Airbnb hosts and property investors by providing data-driven price estimations based on listing characteristics such as location, room type, and accommodation capacity.
-The application offers two main user flows:
+The Berlin Airbnb market is highly competitive, making accurate pricing a critical factor for both hosts and property investors.
+This project provides a data-driven pricing solution that predicts optimal nightly prices based on property characteristics and location.
 
-Host Mode: Price recommendation for Airbnb hosts
+The application is designed for:
 
-Investor Mode: Market insights and pricing analysis for potential investors
+•	Hosts, who want to price their listings competitively and create effective descriptions
 
-Machine Learning
+•	Investors, who want to evaluate potential rental income and profitability before purchasing a property
 
-Trained regression-based model using historical Airbnb listing data
-Model serialized using joblib
-Deployed model size: ~769 MB
-Prediction executed in real time within the Streamlit application
+Dataset
 
-Tech Stack
+•	Source: Kaggle
+https://www.kaggle.com/datasets/thedevastator/berlin-airbnb-ratings-and-reviews-overview
 
-Python
-Streamlit (Frontend & App logic)
-scikit-learn (Machine Learning)
-pandas / numpy (Data processing)
-Plotly (Visualizations)
-AWS EC2 (Cloud deployment)
+•	Dataset: Airbnb Berlin.csv
 
-Deployment Details
+•	Scope: ~456,000 listings with location, property attributes, and booking information
 
-Cloud Provider: AWS EC2
-Instance: t3.small (with swap memory enabled)
-Process Management: systemd (auto-restart & reboot persistence)
-Static IP: AWS Elastic IP
-Access: Public HTTP endpoint
-The application is configured to automatically start after instance reboots and remains accessible without manual intervention.
+Modeling Approach
 
+The full data science workflow was implemented in a Jupyter Notebook:
 
-GitHub + Git LFS (Version control for large model files)
+•	Data exploration and cleaning
+
+•	Feature engineering (categorical encoding, geographic features)
+
+•	Model training and evaluation
+
+Models Used
+
+•	RandomForestRegressor
+
+•	GradientBoostingRegressor
+
+Random Forest was selected as the final model due to superior performance (higher R² and lower error metrics).
+
+Model notebook:
+
+M516_Business_Project_in_Big_Data_&_AI.ipynb
+
+Application Features
+
+•	Host Mode:
+
+Price recommendation, explainable pricing insights, Berlin price heatmap, and an AI-powered listing description assistant.
+
+•	Investor Mode:
+
+Revenue and yield estimation under different occupancy scenarios with optional manual price override.
+
+Deployment
+
+•	Platform: AWS EC2 (Ubuntu)
+
+•	Framework: Streamlit
+
+•	Environment: Python venv
+
+•	Service Management: systemd (auto-start on reboot)
+
+•	Access: Public Elastic IP
+
+Technologies
+
+Python, Pandas, NumPy, Scikit-learn, Streamlit, AWS EC2, GitHub

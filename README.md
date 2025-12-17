@@ -12,7 +12,9 @@ Project Overview
 
 This project aims to support Airbnb hosts and property investors by providing data-driven price estimations based on listing characteristics such as location, room type, and accommodation capacity.
 The application offers two main user flows:
+
 Host Mode: Price recommendation for Airbnb hosts
+
 Investor Mode: Market insights and pricing analysis for potential investors
 
 Machine Learning
